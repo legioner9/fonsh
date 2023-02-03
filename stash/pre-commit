@@ -22,10 +22,12 @@ bsh_ 1>/dev/null
 
 # check_all_tst_arr
 
-arr_dir_for_check_all_tst=()
-readarray -t arr_dir_for_check_all_tst <"$PATH_TST_FILE"
+# arr_dir_for_check_all_tst=()
+# readarray -t arr_dir_for_check_all_tst <"$PATH_TST_FILE"
 
-if [ "$(up_err_ tst /home/st/start/communis/Deploy_store/.qa/.config/.tst -echo)" ]; then
+build_fonsh_
+
+if [ "$(up_err_ tst ${FONSH_PATH}/.d/.tst/local.list -echo)" ]; then
     echo -e "${BLUE}---INIT0 patch with EXIT 0---${NORMAL}" #sistem info mesage
     # exit 0
 else
