@@ -2,7 +2,7 @@
 
 #. "$HOME/.bashrc"
 
-filename="$PATH_FN/dir_foff_/foff_tst/_flow_tst.sh" 
+filename=${FONSH_PATH}/actio/dir_fo_fff_/fo_fff_extst/extst_1/ex2/_flow_tst.sh 
 
 # echo -e "${HLIGHT}---start file://$filename ---${NORMAL}" # start file
 
@@ -12,7 +12,7 @@ cd "$(prs_f -d $filename)" || qq_exit "$(prs_f -d filename) not found"
 
 >res
 
-foff_ < dat &>> res
+cr_tst_dir_ < dat &>> res
 
 cd "$idir"
 
