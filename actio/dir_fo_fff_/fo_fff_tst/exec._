@@ -2,7 +2,7 @@
 
 #. "$HOME/.bashrc"
 
-filename=${FONSH_PATH}/actio/dir_fo_fff_/fo_fff_tst//exec._tst 
+filename=${FONSH_PATH}/actio/dir_fo_fff_/fo_fff_tst//exec._ 
 
 # echo -e "${HLIGHT}---start file://$filename ---${NORMAL}" # start file
 
