@@ -3,19 +3,25 @@ filename="${FONSH_PATH}/.s/debag/optima_fo/cr_del_fo.sh"
 # echo -e "${HLIGHT}---start file://$filename ---${NORMAL}" # start file
 PW=$(pwd)
 idir="$(dirname ${filename})"
-cd "${idir}" || {
-    echo "${idir} not dir" >&2
-    return 1
-}
+# cd "${idir}" || {
+#     echo "${idir} not dir" >&2
+#     return 1
+# }
+
 #?----------------------------------------------------
 #?-------------------------------------
 
-wrp2_ f_f_arg_ --_name_fn fo_ --_dir_fns ${idir}/check_dir_fo --_flow 3
-errno=$?
-if [ ${errno} -ne 0 ]; then
-    plt_exit "be return ${errno} <- Fail: ${FNN} in ${FNLOCK}"
-    return ${errno}
-fi
+echo -e "
+is_est_ ${idir}/check_dir_fo -d
+
+wrp2_ rm --_cxd ${idir}/check_dir_fo/dir_fo_0_
+
+f_f_arg_ --_name_fn fo_0_ --_dir_fns ${idir}/check_dir_fo --_flow 3
+
+" > ${idir}/tmp.exl
+
+exl_ --list ${idir}/tmp.exl
+rm -v ${idir}/tmp.exl
 
 #{body_sh}
 #?-------------------------------------

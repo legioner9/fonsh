@@ -1,0 +1,32 @@
+[0;32m${g_args[@]}: [0m
+[0;32m$tst_dir = /home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst/[0m
+vi0_cr_f_=/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//_flow_tst.sh
+vr0_cr_f_={file_path}
+mv: '/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//exec._tst' и '/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//exec._tst' - один и тот же файл
+vi0_cr_f_=/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//exec._tst
+vr0_cr_f_={file_path}
+[0;34m#>exl[0m
+[0;34m[0m
+[0;34m# start/communis/Deploy_store/.qa/.exl/cr_tst_dir_/create_tst_dir.exl[0m
+[0;34m[0m
+[0;34meval tml_dir=${PATH_TML_DIR}/cr_tst_dir_/fn_tst[0m
+[0;34meval tst_dir=${PPWD}/${name_dir}[0m
+[0;34meval cp -rfuv ${tml_dir}/. ${tst_dir}[0m
+[0;34m[0m
+[0;34m#? _flow_tst.sh[0m
+[0;34meval file_path=${tst_dir}/_flow_tst.sh[0m
+[0;34m[0m
+[0;34meval cr_f_ ${file_path} --vi0 ${file_path} --vr0 {file_path}[0m
+vi0_cr_f_=/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//_flow_tst.sh
+vr0_cr_f_={file_path}
+[0;34meval upg_path_ ${file_path}[0m
+[0;34m[0m
+[0;34m#? exec._tst[0m
+[0;34meval wrp_fifs2_ mv ${tst_dir}/exec._tst ${tst_dir}/exec._${ext}[0m
+mv: '/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//exec._tst' и '/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//exec._tst' - один и тот же файл
+[0;34meval file_path=${tst_dir}/exec._${ext}[0m
+[0;34m[0m
+[0;34meval cr_f_ ${file_path} --vi0 ${file_path} --vr0 {file_path}[0m
+vi0_cr_f_=/home/st/REPOBARE/_repo/fonsh/actio/dir_fo_/fo_tst//exec._tst
+vr0_cr_f_={file_path}
+[0;34meval upg_path_ ${file_path}[0m

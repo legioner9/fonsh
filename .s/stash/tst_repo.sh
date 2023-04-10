@@ -32,22 +32,9 @@ list=${FONSH_PATH}/.d/.tst/local.list
 if up_err_ tst ${list} 1>/dev/null; then
     echo -e "${BLUE}---INIT0 patch in ${list} with EXIT 0---${NORMAL}" #sistem info mesage
     # exit 0
+    return 0
 else
     echo -e "${RED}---INIT0 patch in ${list} with EXIT 1---${NORMAL}" #sistem info mesage
-    exit 1
+    # exit 1
+    return 1
 fi
-
-# if [ "$(check_all_tst "$HOME"/start/communis/Deploy_store/.qa)" ]; then
-#     echo -e "${BLUE}---INIT0 patch with EXIT 0---${NORMAL}" #sistem info mesage
-#     exit 0
-# else
-#     echo -e "${RED}---INIT0 patch with EXIT 1---${NORMAL}" #sistem info mesage
-#     exit 1
-# fi
-
-#----------
-#----------------------------
-#------------------------------------------------------
-unset filename
-
-# exit 0
