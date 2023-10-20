@@ -1,5 +1,40 @@
 #!/bin/bash
 
+c_up() {
+    echo -e "${CYAN}---c_up() \$1 = $1---${NORMAL}" #started functions
+    IFS=$IIFS
+
+    # cd_h "$1" "$filename" "$LINENO"
+    if [[ -d "$1" ]]; then
+        cd "$1"
+    else
+        echo "$1 is not dir" >&2
+        return 1
+    fi
+
+    local dir
+    dir=$(pwd)
+
+    for item in *; do
+
+        local item_path=$dir/$item
+
+        if [ -f "$item_path" ] && [ "${item:0:1}" != "_" ] && [ "${item##*.}" = sh ]; then
+            . "$item_path"
+
+        elif
+            [ -d "$item_path" ] && [ "${item:0:1}" != "_" ]
+        then
+
+            c_up "$item_path"
+
+        fi
+
+    done
+}
+
+export c_up
+
 . "${FONSH_PATH}"/.d/.config/env.sh
 . "${FONSH_PATH}"/.d/.frc/a.frc
 c_up "${FONSH_PATH}/actio"
