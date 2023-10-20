@@ -1,2 +1,5 @@
 #!/bin/bash
 
+. "${FONSH_PATH}"/.d/.config/env.sh
+. "${FONSH_PATH}"/.d/.frc/a.frc
+c_up "${FONSH_PATH}/actio"
