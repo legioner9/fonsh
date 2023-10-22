@@ -1,0 +1,12 @@
+    cd ..
+    
+    ${_wrp2_} c_up --_xxd "$(pwd)" >/dev/null
+
+    for res_ in *; do
+        # echo -e "${GREEN}\$arr_ = $arr_${NORMAL}" #print variable
+        res_=$(prs_f -n "${res_}")
+        arr_=$(${res_} _head)
+
+        arr+=("${arr_}")
+        res+=("${res_}")
+    done

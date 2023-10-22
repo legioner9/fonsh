@@ -1,0 +1,22 @@
+FN_DIR=${dir_fns_}/dir_${FNN} #? contane dir of function
+FLN=$0
+# ARGS=($@)
+ARGS0=${ARGS[0]}
+ARGS1=${ARGS[1]}
+ARGS2=${ARGS[2]}
+NARGS=$#
+PPWD=$PWD
+#? ${FNN}mdeb function - menu for debug flows
+RATIS_DIR=$(prs_f -d $PPWD) #? ratis is dir of generating kit function
+# $PATH_FN/dir_$FNN/ === $ORIGO_DIR === $FN_DIR
+
+FN_DOTD_DIR=${FN_DIR}/.d.ax
+FN_SAL_DIR=${FN_DIR}/.d.ax/.sal.ax #? dir with fn's any contant
+FN_CIR_DIR=${FN_DIR}/.d.ax/.cir    #? dir with fn's any contant
+
+FN_CONT_DIR=${FN_DIR}/.d.ax/.${FNN}  #? dir with fn's any contant
+FN_FN_DIR=${FN_CONT_DIR}/_fn         #? dir with fn's subfunction
+FN_TMP_DIR=${FN_CONT_DIR}/_tmp       #? dir with fn's tmp
+FN_DEBUG_DIR=${FN_CONT_DIR}/_debug   #? dir with fn's free debug flow
+FN_CONFIG_DIR=${FN_CONT_DIR}/_config #? dir with fn's config
+FN_DEFAULT_DIR=${FN_CONT_DIR}/_default

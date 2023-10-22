@@ -1,0 +1,12 @@
+@startuml rete
+garg2e2_ -> gfg_f_ 
+farg2e2_ -> gfg_f_
+echo_deb_ -> gfg_f_
+gfg_f_ -> gfg_f_:is_num
+gfg_f_ -> gfg_f_:exit_err_gfg_f_
+gfg_f_ -> gfg_f_:exit_reg_gfg_f_
+gfg_f_ -> gfg_f_:unset_autoargs_gfg_f_
+' {wrap_fn}
+' fnn o-> gfg_f_
+' {body_fn}
+@enduml

@@ -1,0 +1,9 @@
+unset {name_fn_}mdeb
+
+wrp2_ cd --_xxd ${rdir}
+
+cd ..
+
+. {name_fn_}mdeb.sh
+
+{name_fn_}mdeb

@@ -1,0 +1,4 @@
+@startuml rete
+' {wrap_fn}
+' {body_fn}
+@enduml

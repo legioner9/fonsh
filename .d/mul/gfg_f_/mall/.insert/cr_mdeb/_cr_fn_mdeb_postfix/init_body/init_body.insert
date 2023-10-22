@@ -1,0 +1,5 @@
+file_name={mdeb_cntl_dir}/_start_{name_fn_}mdeb.sh
+this_dir=$(dirname "${file_name}")
+this_name=$(basename "${file_name}")
+#
+#{body}

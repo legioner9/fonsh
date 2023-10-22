@@ -1,0 +1,26 @@
+local ARGS=($@)
+local FNN={name_fn_}
+
+# if ! ${_garg2e2_} "${ARGS[@]}" 1>/dev/null; then
+if ! ${_garg2e2_} "${ARGS[@]}"; then
+    ${_plt_exit} " {name_fn_} return 1: ${FNLOCK}"
+    return 1
+fi
+#? g_args with cntl=value
+local g_args=($(${_garg2e2_} "${ARGS[@]}"))
+#? e_args is {ARGS[@]} without cntl and cmtl_value - as it's free
+local e_args=($(${_earg2e2_} "${ARGS[@]}"))
+
+[[ 1 -eq ${verbose} ]] || echo -e "${GREEN}\${g_args[@]}: ${g_args[*]}${NORMAL}" #print variable
+
+local strex
+for strex in $(${_garg2e2_} "${ARGS[@]}"); do
+    [[ 1 -eq ${verbose} ]] || echo "local $strex"
+    eval local $strex
+done
+
+# echo ". ${FN_SAL_DIR}/{name_fn_}.body.nsc.sh"
+if ! . "{dir_fns_}/dir_{name_fn_}/.d.ax/.sal.ax/{name_fn_}.body.nsc.sh"; then
+    ${_plt_exit} "fail: . {dir_fns_}/dir_{name_fn_}/.d.ax/.sal.ax/{name_fn_}.body.sh"
+    return 1
+fi

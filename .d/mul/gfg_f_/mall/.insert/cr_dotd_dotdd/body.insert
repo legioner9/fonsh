@@ -1,0 +1,7 @@
+echo ${rdir}
+${_wrp2_} cd --_xxd ${rdir}
+cd ..
+
+${_wrp2_} tree -a -L 2 -o "$(pwd)"/.dd/tree_gign_dir.man --_xxd ^"$(pwd)"
+
+sed -i '1s|^|'"tree -a -L 2 in $(pwd)\\n"'|' "$(pwd)"/.dd/tree_gign_dir.man

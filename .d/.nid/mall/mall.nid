@@ -1,0 +1,303 @@
+# local FNN=${FUNCNAME[0]}
+# local ORIGO_DIR=$PATH_FN/dir_$FNN === ${FN_DIR}
+# echo -e "2 ${GREEN}\$FNN = $FNN${NORMAL}" #print variable
+
+# HARDCOR FN_DIR
+# FN_DIR=${dir_fns_}/dir_${FNN} #? contane dir of function
+# FLN=$0
+# # ARGS=($@)
+# NARGS=$#
+# PPWD=$PWD
+# #? ${FNN}mdeb function - menu for debug flows
+# RATIS_DIR=$(prs_f -d $PPWD) #? ratis is dir of generating kit function
+# # $PATH_FN/dir_$FNN/ === $ORIGO_DIR === $FN_DIR
+
+# FN_DOTD_DIR=${FN_DIR}/.d.ax
+# FN_SAL_DIR=${FN_DIR}/.d.ax/.sal.ax #? dir with fn's any contant
+# FN_CIR_DIR=${FN_DIR}/.d.ax/.cir    #? dir with fn's any contant
+
+# FN_CONT_DIR=${FN_DIR}/.d.ax/.${FNN}  #? dir with fn's any contant
+# FN_FN_DIR=${FN_CONT_DIR}/_fn         #? dir with fn's subfunction
+# FN_TMP_DIR=${FN_CONT_DIR}/_tmp       #? dir with fn's tmp
+# FN_DEBUG_DIR=${FN_CONT_DIR}/_debug   #? dir with fn's free debug flow
+# FN_CONFIG_DIR=${FN_CONT_DIR}/_config #? dir with fn's config
+# FN_DEFAULT_DIR=${FN_CONT_DIR}/_default
+
+# cntl_args=(-h _man _tst _puml _flw _extst _deb _mdeb _head _lst _go _sal _extst1 _extst2 _extst3 _extst4 _exdeb1 _exdeb2 _exdeb3 _exdeb4)
+
+echo "start plt/.d/.nid/mall/mall.nid"
+
+FNLOCK="fn: ${FNN}, with_args: ${ARGS[*]} , filename: ${PATH_FN}/${FNN}.sh, line: $LINENO"
+# local FN_ERR_FILE="${FN_DIR}/_${FNN}/_out/err.res"
+# wrp_fifs1_ rm -f "${FN_ERR_FILE}" -cf1
+verbose=0
+[[ " ${ARGS[*]} " =~ " -verbose " ]] || verbose=1
+[[ 1 -eq ${verbose} ]] || {
+    echo -e "${CYAN}---$FNN() ${ARGS[*]} ---${NORMAL}" #started functions
+    echo -e "${GREEN}\${FN_DIR} = ${FN_DIR}${NORMAL}"  #print variable
+    echo -e "${GREEN}\$PPWD = $PPWD${NORMAL}"          #print variable
+}
+#{def_const}
+
+[[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_c_up} "${FN_FN_DIR}" 1>/dev/null ---${NORMAL}" #start files
+"${_c_up}" "${FN_FN_DIR}" 1>/dev/null
+if [ "_man" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_SAL_DIR}/"$FNN".man ---${NORMAL}" #start files
+    "${_ehh}" "${_edit_}" "${FN_SAL_DIR}"/"$FNN".man
+    return 0
+fi
+
+if [ "-h" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_SAL_DIR}/"$FNN".h.sh ---${NORMAL}"
+
+    hf_fn="${PATH_SAL_AX_DIR}/${FNN}/${FNN}.h"
+    "${_ehh}" cat "${hf_fn}"
+    echo
+    return 0
+fi
+
+if [ "_edit_h" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_SAL_DIR}/"$FNN".h.sh ---${NORMAL}"
+
+    echo -e "${HLIGHT}--- ${_edit_} ${FN_SAL_DIR}/${FNN}.d.h ---${NORMAL}" #start files
+    "${_edit_}" "${FN_SAL_DIR}/${FNN}".d.h
+
+    return 0
+fi
+
+if [ "_cr_h" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_SAL_DIR}/"$FNN".h.sh ---${NORMAL}" #start files
+    echo -e "${HLIGHT}--- . ${PATH_EXL_DIR}/mall/cr_fn_h_file.sh ---${NORMAL}"
+
+    hf_fn="${PATH_SAL_AX_DIR}/${FNN}/${FNN}.h"
+    h_tml="${PATH_NID_DIR}/mall/.tml/h.tml"
+
+    echo -e "${HLIGHT}--- . ${PATH_EXL_DIR}/mall/cr_fn_h_file.sh ---${NORMAL}" #start files
+    echo | . "${PATH_EXL_DIR}/mall/cr_fn_h_file.sh"
+
+    "${_ehh}" cat "${PATH_SAL_AX_DIR}/${FNN}/${FNN}.h"
+    echo
+    return 0
+fi
+
+if [ "_tst" == "$1" ]; then
+    tst_file="${FN_DIR}/${FNN}"tst/exec.tst
+    if [ -f "${tst_file}" ]; then
+        [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- . ${tst_file} ---${NORMAL}" #start files
+        . "${tst_file}"
+        return $?
+    else
+        "${_plt_exit}" "not exist file: ${tst_file} " #exit 1
+        return 1
+    fi
+fi
+
+if [ "_puml" == "$1" ]; then
+    puml_file="${FN_DIR}/${FNN}".puml
+    if [ -f "${puml_file}" ]; then
+        [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_puml_} ${puml_file} -_drawing ---${NORMAL}" #start files
+        "${_ehh}" "${_puml_}" --_xxf "${puml_file}" -_drawing
+        return $?
+    else
+        "${_plt_exit}" "not exist file: ${puml_file} " #exit 1
+        return 1
+    fi
+fi
+
+if [ "_flw" == "$1" ]; then
+    flw_file="${FN_DIR}/$FNN"tst/_flow_tst.sh
+    if [ -f "${flw_file}" ]; then
+        [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- . ${flw_file} ---${NORMAL}" #start files
+        . "${flw_file}"
+        return $?
+    else
+        "${_plt_exit}" "not exist file: ${flw_file} " #exit 1
+        return 1
+    fi
+fi
+
+if [ "_head" == "$1" ]; then
+    echo "_head fn (default for _mdeb): ${FNN}"
+    return 0
+fi
+
+# for int in 1 2 3 4; do
+#     if [ "_extst${int}" == "$1" ]; then
+#         extst_num_file="${FN_DIR}/${FNN}"extst/extst_1/ex${int}_tst/exec.extst
+#         if [ -f "${extst_num_file}" ]; then
+#             [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- . ${extst_num_file} ---${NORMAL}" #start files
+#             . "${extst_num_file}"
+#             return 0
+#         else
+#             "${_plt_exit}" "not exist file: ${extst_num_file} "
+#             return 1
+#         fi
+#     fi
+# done
+
+# for int in 1 2 3 4; do
+#     if [ "_exdeb${int}" == "$1" ]; then
+#         exdeb_num_file="${FN_DIR}/${FNN}"extst/extst_1/ex${int}_tst/_flow_tst.sh
+#         if [ -f "${exdeb_num_file}" ]; then
+#             [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- . ${exdeb_num_file} ---${NORMAL}" #start files
+#             . "${exdeb_num_file}"
+#             return 0
+#         else
+#             "${_plt_exit}" "not exist file: ${exdeb_num_file} "
+#             return 1
+#         fi
+#     fi
+# done
+
+if [ " _extst " == "$1" ]; then
+    extst_file="${FN_DIR}/$FNN"extst/extst_1/start_exec.tst
+    if [ -f ${tst_file} ]; then
+        [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- . ${extst_file} ---${NORMAL}" #start files
+        . "${extst_file}"
+        return $?
+    else
+        "${_plt_exit}" "not exist file: ${extst_file} " #exit 1
+        return 1
+    fi
+fi
+
+if [ "_lst" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_DIR}/${FNN}.lst ---${NORMAL}" #start files
+    "${_ehh}" "${_edit_}" "${FN_DIR}/${FNN}".lst
+    return 0
+fi
+
+if [ "_go" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_DIR}/ ---${NORMAL}" #start files
+    "${_ehh}" "${_edit_}" ${FN_DIR}
+    return 0
+fi
+
+if [ "_sal" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${_edit_} ${FN_SAL_DIR}/"$FNN".man ---${NORMAL}" #start files
+    "${_edit_}" "${PATH_SAL_AX_DIR}"/"$FNN"
+    return 0
+fi
+
+if [ "_deb" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- . ${FN_CONT_DIR}/_default/default_deb.sh ---${NORMAL}" #start files
+    . "${FN_DEFAULT_DIR}"/default_deb.sh
+    return 0
+fi
+
+if [ "_mdeb" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${FNN}mdeb() ---${NORMAL}"             #start files
+    echo -e "${HLIGHT}--- . ${FN_DOTD_DIR}/.mdeb/.cntl/_start_${FNN}mdeb.sh $2 ---${NORMAL}" #start files
+    . "${FN_DOTD_DIR}/.mdeb/.cntl/_start_${FNN}mdeb.sh" "$2"
+    return 0
+fi
+
+if [ "_mdeb_add" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${FNN}mdeb() ---${NORMAL}" #start files
+    ${_is_amount_arg} "${NARGS}" 3 3 || {
+        plt_exit "NARG_ERR: _mdeb_add \$3 NOT EXIST"
+        return 1
+    }
+    plt_pause "create for ${FNN}? function a$2_fp_f_mdeb_$3 "
+    echo -e "${HLIGHT}--- . ${FN_DOTD_DIR}/.mdeb/.cntl/_cr_${FNN}mdeb_postfix.sh $2 $3 ---${NORMAL}" #start files
+    . "${FN_DOTD_DIR}/.mdeb/.cntl/_cr_${FNN}mdeb_postfix.sh" "$2" "$3"
+    return 0
+fi
+
+if [ "_cntl2e" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${FNN}mdeb() ---${NORMAL}"
+    echo -e "${BLUE}--- that all cntl from ${PATH_NID_DIR}/mall/mall.cntl ---${NORMAL}" #sistem info mesage       #start files
+    echo -e "${HLIGHT}--- f2e ${PATH_NID_DIR}/mall/mall.cntl ---${NORMAL}"              #start files
+    f2e ${PATH_NID_DIR}/mall/mall.cntl
+    return 0
+fi
+
+if [ "_prp" == "$1" ]; then
+    [[ 1 -eq "${verbose}" ]] || echo -e "${HLIGHT}--- ${FNN}mdeb() ---${NORMAL}" #start files
+
+    "${_ehh}" ${_el_f_prp_} --_name_for_fn ${FNN} --_dir_for_fns ${dir_fns_} --_prp "$2"
+    return 0
+fi
+#{cntl_default}
+#{#cntl_help}
+#{ctrl_args}
+
+[[ 1 -eq ${verbose} ]] || echo -e "${HLIGHT}--- wrp_fifs1_ cd $PPWD -d1 1>/dev/null ---${NORMAL}" #start files
+
+# ${_wrp2_} cd --_xxd "$PPWD" 1>/dev/null
+cd "$PPWD" 1>/dev/null || plt_exit "fail : cd $PPWD"
+
+#!function body===================================================================
+#!function body===============================================
+#!function body======================
+#? amount_arg $# min_args max_args "in $FNN :: $*"
+#? USE ln1_() -echo -deb
+echo_=0
+debug_=0
+verbose_=0
+develop1_=0
+
+# if ! ${_garg2e2_} "${ARGS[@]}" 1>/dev/null; then
+#     plt_exit " ${FNN} return 1: ${FNLOCK}"
+#     return 1
+# fi
+# #? g_args with cntl=value
+# g_args=($(${_garg2e2_} "${ARGS[@]}"))
+# #? e_args is {ARGS[@]} without cntl and cmtl_value - as it's free
+# e_args=($(${_earg2e2_} "${ARGS[@]}"))
+# [[ 1 -eq ${verbose} ]] || echo -e "${GREEN}\${g_args[@]}: ${g_args[*]}${NORMAL}" #print variable
+# for strex in $(${_garg2e2_} "${ARGS[@]}"); do
+#     [[ 1 -eq ${verbose} ]] || echo "local $strex"
+#     eval local $strex
+# done
+#{garg}
+#
+#? cd "$1" || {
+#?    read -p "$1: $1 not dir - enter for exit 1, ^C for interrapt in ${FNLOCK}"
+#?    exit 1
+#?}
+#{#ptr_if}
+${_echo_deb_} ${echo_} "cntl echo_deb_ mode in ${FNLOCK}"
+if [ -n "${debug_}" ] && [ ${debug_} -eq 1 ]; then
+    echo "DEBUG MODE in ${FNLOCK}"
+    echo "\${errmes_}: ${errmes_}"
+    echo "\${outmes_}: ${outmes_}"
+fi
+if [ -n "${develop1_}" ] && [ ${develop1_} -eq 1 ]; then
+    echo "develop1 MODE in ${FNLOCK}"
+fi
+#{see_cntl}
+#{#def_exit}
+#! strongly return 1 -> exit_err_ $1
+#! strongly return 0 -> exit_reg_
+#! treat error for inner functions
+# >${FN_OUT_DIR}/com_ln1_.res
+# COMMAND &>>${FN_OUT_DIR}/com_ln1_.res
+# if [ $? -ne 0 ]; then
+#     if [ 1 -eq ${verbose} ]; then
+#         cat ${FN_OUT_DIR}/com_ln1_.res
+#     fi
+#     #? runtime error allowed locally
+#     error_allowed_locall_string="STRING"
+#     if cat ${FN_OUT_DIR}/COMMAND_ln1_.res | is_rl_siev_and ${error_allowed_locall_string}; then
+#         continue
+#     else
+#         exit_err_ln1_ "runtime error:: COMMAND ${addr}"
+#     fi
+# fi
+#! amount args
+# ${_is_amount_arg} ${NARGS} min_equ max_equ
+# if [ $? -ne 0 ]; then
+#     plt_pause "${_is_amount_arg}:: be return 1 <- Fail: ${FNLOCK}"
+#     return 1
+# fi
+#! normalize ptr_path -> absolut path
+# ptr_path=$1
+# ptr_path=$(${_abs_path} $PPWD "ptr_path") #ptr args
+#! variables for cr_f_dir_insert_
+# fn_name=$(${_prs_f} -n ${arg_path})
+# root_path=$(${_prs_f} -d ${arg_path})
+#! search in array
+# [[ " ${arr[*]} " =~ " $1 " ]] && echo "true" || echo "false"
+#! ${array[@]:1} all from 1 member arr
+#{hints}

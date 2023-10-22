@@ -1,0 +1,8 @@
+local ARGS=($@)
+local FNN={name_fn_}
+
+# echo ". ${FN_SAL_DIR}/{name_fn_}.body.nsc.sh"
+if ! . "{dir_fns_}/dir_{name_fn_}/.d.ax/.sal.ax/{name_fn_}.body.nsc.sh"; then
+    ${_plt_exit} "fail: . {dir_fns_}/dir_{name_fn_}/.d.ax/.sal.ax/{name_fn_}.body.sh"
+    return 1
+fi

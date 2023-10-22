@@ -1,0 +1,7 @@
+garg2e2_ -> {name_fn_} 
+farg2e2_ -> {name_fn_}
+echo_deb_ -> {name_fn_}
+{name_fn_} -> {name_fn_}:is_num
+{name_fn_} -> {name_fn_}:exit_err_{name_fn_}
+{name_fn_} -> {name_fn_}:exit_reg_{name_fn_}
+{name_fn_} -> {name_fn_}:unset_autoargs_{name_fn_}
