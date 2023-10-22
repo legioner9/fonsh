@@ -1,11 +1,15 @@
 #!/bin/bash 
 
+
+
 tml_dir=${PLT_PATH}/.d/.mul/${_gig_f_}/${grad_}/${tail_}/.tml
 echo -e "${GREEN}\$tml_dir = $tml_dir${NORMAL}" #print variable
 
 insert_dir=${PLT_PATH}/.d/.mul/${_gig_f_}/${grad_}/${tail_}/.insert
 echo -e "${GREEN}\$insert_dir = $insert_dir${NORMAL}" #print variable
 
+#REPOBARE/_repo/fonsh/.d/mul/gfg_f_/mall/.exl
+#! ${PLT_PATH}/.d/.mul/${_gig_f_}/${grad_} -> ${FONSH_PATH}
 exl_dir=${PLT_PATH}/.d/.mul/${_gig_f_}/${grad_}/${tail_}/.exl
 echo -e "${GREEN}\$exl_dir = $exl_dir${NORMAL}" #print variable
 
