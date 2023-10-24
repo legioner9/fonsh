@@ -2,7 +2,7 @@
 
 c_up() {
     echo -e "${CYAN}---c_up() \$1 = $1---${NORMAL}" #started functions
-    IFS=$IIFS
+    IFS=$' \t\n'
 
     # cd_h "$1" "$filename" "$LINENO"
     if [[ -d "$1" ]]; then
