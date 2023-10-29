@@ -1,6 +1,8 @@
 
 # $\mathscr{fons\ sh }$
 
+# intro
+
 # install
 
     FONSH_PATH="path to fonsh lib"
