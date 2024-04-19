@@ -1,0 +1,11 @@
+[1m--- exec: diff -qr file:///home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/dir_dat file:///home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/_is_dDIFz.tmp.d/dir_dat >/dev/null ---[0m
+1 true
+[1m--- exec: diff -qr file:///home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/dir_dat file:///home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/_is_dDIFz.tmp.d/dir_dat >/dev/null ---[0m
+in fs= file:///home/st/.st.rc.d/.st.sh.d/_is_dDIFz.sh , line=116, _is_dDIFz() : : EXEC_FAIL : 'diff -rq /home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/dir_dat /home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/_is_dDIFz.tmp.d/dir_dat' :  : return 1
+[1m--- exec: diff -r file:///home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/dir_dat file:///home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/_is_dDIFz.tmp.d/dir_dat ---[0m
+diff -r /home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/dir_dat/0 /home/st/.st.rc.d/.st.tst.d/_is_dDIFz.tst.d/tst.d/_is_dDIFz.tmp.d/dir_dat/0
+1c1
+< 1
+---
+> 0
+2 false

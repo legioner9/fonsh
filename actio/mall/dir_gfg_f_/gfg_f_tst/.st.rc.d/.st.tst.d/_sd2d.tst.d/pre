@@ -1,0 +1,22 @@
+tst.d
+├── 0
+├── init_RES.d
+│   ├── 0
+│   ├── file.f
+│   ├── file_RES.f
+│   └── inner_RES.d
+│       ├── file_inner.f
+│       └── file_inner_RES.f
+└── init_XXX.d
+    ├── 0
+    ├── file.f
+    ├── file_XXX.f
+    └── inner_XXX.d
+        ├── file_inner.f
+        └── file_inner_XXX.f
+
+4 directories, 11 files
+that file_RES.f
+that file.f - see _RES
+that file_inner_RES.f
+that file_inner.f - see _RES

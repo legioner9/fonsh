@@ -1,0 +1,88 @@
+#!/bin/bash
+
+IFS=$' \t\n'
+
+_up_d() {
+
+    if ! [[ -d "$1" ]]; then
+        echo "in _up_d() : NOT_DIR : file://$1 return 1" >&2
+        return 1
+    fi
+
+    local item
+
+    for item in $(ls $1); do
+
+        local path_file=${path_dir}/${item}
+
+        if [[ -f ${path_file} ]]; then
+            # echo ". file://${path_file}" >/dev/null
+            echo ". file://${path_file}"
+            if ! . ${path_file}; then
+                echo "in _up_d() : FAIL_EXEC : . file://$path_file return 1" >&2
+                return 1
+            fi
+        fi
+
+    done
+
+}
+
+_up_st_sh_d() {
+
+    local path_dir=${HOME}/.st.rc.d/.st.sh.d
+
+    if ! [[ -d "$path_dir" ]]; then
+        echo "in fs= file://${HOME}/.st.rc.d/.st.rc ${LINENO} _up_st_sh_d() : NOT_DIR : file://$path_dir return 1" >&2
+        return 1
+    fi
+    _up_d ${path_dir}
+
+}
+
+if ! _up_st_sh_d; then
+    echo "in fs= file://${HOME}/.st.rc.d/.st.rc , line=${LINENO}: : EXEC_FAIL : '_up_st_sh_d()' : ${hint} : return 1" >&2
+    return 1
+fi
+
+echo ". ${HOME}/.st.rc.d/.st.tst"
+if ! . ${HOME}/.st.rc.d/.st.tst; then
+    echo "in fs= file://${HOME}/.st.rc.d/.st.rc , line=${LINENO} : EXEC_FAIL : '. ${HOME}/.st.rc.d/.st.tst' : ${hint} : return 1" >&2
+    return 1
+fi
+
+_loop_lib_st_rc() {
+
+    local file_lib_lst=${HOME}/.st.rc.d/.st.lst
+
+    if ! [[ -f ${file_lib_lst} ]]; then
+        echo "in fs= file://${HOME}/.st.rc.d/.st.rc ${LINENO} _loop_lib_st_rc() : NOT_FILE : file://$file_lib_lst return 1" >&2
+        return 1
+    fi
+    local item
+    for item in $(_f2e ${file_lib_lst}); do
+
+        if [[ -f ${item} ]]; then
+
+            IFS=$' \t\n'
+            echo ". ${item} >/dev/null"
+            if ! . ${item} >/dev/null; then
+                echo "in fs= file://${HOME}/.st.rc.d/.st.rc ${LINENO} _loop_lib_st_rc() : FAIL_EXEC : . file://$item return 1" >&2
+                return 1
+            fi
+
+        else
+            echo "in fs= file://${HOME}/.st.rc.d/.st.rc ${LINENO} _loop_lib_st_rc() : NOT_FILE : file://$item return 1" >&2
+            return 1
+        fi
+
+    done
+}
+
+IFS=$' \t\n'
+
+echo "_loop_lib_st_rc()"
+if ! _loop_lib_st_rc; then
+    echo "in fs=file://${HOME}/.st.rc.d/.st.rc , line=${LINENO}: : EXEC_FAIL : '_loop_lib_st_rc()' : ${hint} : return 1" >&2
+    return 1
+fi
